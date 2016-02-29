@@ -1,4 +1,4 @@
-function calculate() {
+function calculate(operator, value1, value2) {
   return new Promise(function (resolve) {
     resolve(42);
   });

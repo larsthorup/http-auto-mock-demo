@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Demonstrates how to avoid hand crafted HTTP mocks",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start tools/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -14,5 +14,12 @@
   "bugs": {
     "url": "https://github.com/larsthorup/http-auto-mock-demo/issues"
   },
-  "homepage": "https://github.com/larsthorup/http-auto-mock-demo#readme"
+  "homepage": "https://github.com/larsthorup/http-auto-mock-demo#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "karma": "^0.13.21",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-mocha": "^0.2.2",
+    "mocha": "^2.4.5"
+  }
 }
