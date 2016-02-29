@@ -1,6 +1,6 @@
 var restify = require('restify');
 
-function add (req, res, next) {
+function calcHandler (req, res, next) {
   var response = {result: 42};
   res.send(response);
   next();
@@ -9,7 +9,7 @@ function add (req, res, next) {
 function serving () {
   return new Promise(function (resolve) {
     var server = restify.createServer();
-    server.get('/add/2/4', add);
+    server.get('/add/2/4', calcHandler);
     server.listen(1719, function () {
       resolve(server);
     });

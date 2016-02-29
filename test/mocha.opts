@@ -1,0 +1,4 @@
+--reporter dot
+--require chai
+--require test/mocha.main
+--recursive src/server/**/*.test.js

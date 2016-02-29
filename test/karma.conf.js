@@ -6,7 +6,7 @@ module.exports = function (config) {
 
     files: [
       'node_modules/chai/chai.js',
-      'tools/mocha.main.js',
+      'test/mocha.main.js',
       'src/client/app.js',
       'src/client/app.test.js'
     ],

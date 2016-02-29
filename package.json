@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Demonstrates how to avoid hand crafted HTTP mocks",
   "scripts": {
-    "test": "karma start tools/karma.conf.js"
+    "test:server": "mocha",
+    "test:client": "karma start test/karma.conf.js",
+    "test": "npm run test:server && npm run test:client"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,8 @@
     "karma": "^0.13.21",
     "karma-chrome-launcher": "^0.2.2",
     "karma-mocha": "^0.2.2",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "request-promise": "^2.0.1"
   },
   "dependencies": {
     "restify": "^4.0.4"
