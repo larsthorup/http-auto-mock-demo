@@ -1,6 +1,26 @@
+function requesting (path) {
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:1719' + path, true);
+    xhr.onload = function () {
+      var response = JSON.parse(this.responseText);
+      if(this.status === 200) {
+        resolve(response);
+      } else {
+        reject(new Error(this.statusText));
+      }
+    };
+    xhr.onerror = function () {
+      reject('failed');
+    };
+    xhr.send();
+  });
+}
+
+
 function calculating(operator, value1, value2) {
-  return new Promise(function (resolve) {
-    resolve(42);
+  return requesting('/' + operator + '/' + value1 + '/' + value2).then(function (response) {
+    return response.result;
   });
 }
 

@@ -20,6 +20,7 @@ function calcHandler (req, res, next) {
 function serving () {
   return new Promise(function (resolve) {
     var server = restify.createServer();
+    server.pre(restify.CORS());
     server.get('/:op/:val1/:val2', calcHandler);
     server.listen(1719, function () {
       resolve(server);

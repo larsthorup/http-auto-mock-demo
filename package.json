@@ -23,7 +23,8 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-mocha": "^0.2.2",
     "mocha": "^2.4.5",
-    "request-promise": "^2.0.1"
+    "request-promise": "^2.0.1",
+    "sinon": "^1.17.3"
   },
   "dependencies": {
     "restify": "^4.0.4"
