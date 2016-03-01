@@ -14,7 +14,8 @@ describe('calculating', function () {
       (function (val1, val2) {
         it('should add ' + val1 + ' and ' + val2, function () {
           return api.adding(val1, val2).then(function (response) {
-            response.result.should.equal(val1 + val2);
+            var result = response.result !== undefined ? response.result : response.answer;
+            result.should.equal(val1 + val2);
           });
         });
       })(val1, val2);
