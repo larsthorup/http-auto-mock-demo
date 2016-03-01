@@ -11,7 +11,7 @@ describe('calculate', function () {
     for (val2 = 0; val2 < 30; ++val2) {
       (function (val1, val2) {
         it('should add ' + val1 + ' and ' + val2, function () {
-          return calculating('add', val1, val2).then(function (result) {
+          return calculating('ad', val1, val2).then(function (result) {
             result.should.equal(val1 + val2);
           });
         });

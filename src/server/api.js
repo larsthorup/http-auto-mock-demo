@@ -2,7 +2,8 @@ var restify = require('restify');
 
 function calculate (op, val1, val2) {
   switch(op) {
-    case 'add':
+    // ToDo: fix the spelling error
+    case 'ad':
       return val1 + val2;
     case 'mult':
       return val1 * val2;
@@ -12,8 +13,6 @@ function calculate (op, val1, val2) {
 function calcHandler (req, res, next) {
   var result = calculate(req.params.op, parseInt(req.params.val1), parseInt(req.params.val2));
   var response = {result: result};
-  // Note: uncomment this line to show the client tests catch the broken api contract
-  // if (result === 42) response = {answer: 42};
   res.send(response);
   next();
 }

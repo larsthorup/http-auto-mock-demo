@@ -33,12 +33,8 @@ function requesting (path) {
   });
 }
 
-function adding (value1, value2) {
-  return requesting('/add/' + value1 + '/' + value2);
-}
-
 module.exports = {
   serving: serving,
   close: close,
-  adding: adding
+  requesting: requesting,
 };

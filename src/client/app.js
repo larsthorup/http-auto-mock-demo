@@ -17,7 +17,6 @@ function requesting (path) {
   });
 }
 
-
 function calculating(operator, value1, value2) {
   return requesting('/' + operator + '/' + value1 + '/' + value2).then(function (response) {
     return response.result;
