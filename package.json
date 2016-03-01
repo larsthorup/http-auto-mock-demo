@@ -5,7 +5,9 @@
   "scripts": {
     "test:server": "mocha",
     "test:client": "karma start test/karma.conf.js",
-    "test": "npm run test:server && npm run test:client"
+    "test:debug": "karma start test/karma.conf.js --no-single-run",
+    "test": "npm run test:server && npm run test:client",
+    "start": "node src/server/main"
   },
   "repository": {
     "type": "git",
