@@ -9,8 +9,8 @@ describe('calculating', function () {
     api.close();
   });
 
-  for(val1 = 0; val1 < 30; ++val1) {
-    for (val2 = 0; val2 < 30; ++val2) {
+  for(val1 = 0; val1 < 1; ++val1) {
+    for (val2 = 0; val2 < 2; ++val2) {
       (function (val1, val2) {
         it('should add ' + val1 + ' and ' + val2, function () {
           return api.requesting('/ad/' + val1 + '/' + val2).then(function (response) {

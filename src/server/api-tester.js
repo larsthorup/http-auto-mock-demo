@@ -14,22 +14,64 @@ function serving () {
 
 function close () {
   server.close();
-  fs.writeFileSync('api-traffic.json', JSON.stringify(traffic, null, 4));
+  var httpArchive = {
+    log: {
+      version: '1.2',
+      creator: {name: 'http-auto-mock-demo', version: '0.0.0'},
+      entries: traffic
+    }
+  };
+  fs.writeFileSync('api-traffic.har', JSON.stringify(httpArchive, null, 4));
 };
 
 function requesting (path) {
-  var uri = 'http://localhost:1719' + path;
-  return request(uri).then(function (body) {
+  var startTime = Date.now();
+  var options = {
+    method: 'GET',
+    uri: 'http://localhost:1719' + path,
+    resolveWithFullResponse: true,
+    simple: false
+  };
+  return request(options).then(function (response) {
+    // console.log(response);
+    var endTime = Date.now();
     traffic.push({
+      startedDateTime: new Date(startTime).toISOString(),
+      time: endTime - startTime,
       request: {
-        uri: uri
+        method: options.method,
+        url: options.uri,
+        httpVersion: 'HTTP/1.1',
+        cookies: [],
+        headers: [],
+        queryString: [],
+        postData: undefined,
+        headersSize: -1,
+        bodySize: -1
       },
       response: {
-        statusCode: 200,
-        body: body
+        status: response.statusCode,
+        statusText: response.statusMessage,
+        httpVersion: 'HTTP/' + response.httpVersion,
+        cookies: [],
+        headers: Object.keys(response.headers).map(function (key) { return {name: key, value: response.headers[key]}}),
+        content: {
+          size: response.body.length,
+          mimeType: 'application/json',
+          text: response.body
+        },
+        redirectURL: '',
+        headersSize: -1,
+        bodySize: -1,
+      },
+      cache: {},
+      timings: {
+        send: -1,
+        receive: -1,
+        wait: endTime - startTime
       }
     });
-    return JSON.parse(body);
+    return JSON.parse(response.body);
   });
 }
 
