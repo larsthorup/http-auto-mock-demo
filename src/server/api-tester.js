@@ -1,4 +1,4 @@
-var request = require('./request-har-capture');
+var request = require('request-har-capture');
 var api = require('./api');
 
 var server;
