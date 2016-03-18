@@ -10,7 +10,7 @@ function loading (path) {
         var responses = {};
         for(var i = 0; i < traffic.length; ++i) {
           var exchange = traffic[i];
-          responses[exchange.request.url] = exchange.response;
+          responses[exchange.request.url.href] = exchange.response;
         }
         resolve(responses);
       } else {
