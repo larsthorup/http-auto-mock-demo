@@ -1,35 +1,26 @@
-var fs = require('fs');
-var request = require('request-promise');
+var request = require('request-har-capture');
 var api = require('./api');
 
 var server;
-var traffic;
 
 function serving () {
   return api.serving().then(function (s) {
     server = s;
-    traffic = [];
   });
 }
 
 function close () {
   server.close();
-  fs.writeFileSync('api-traffic.json', JSON.stringify(traffic, null, 4));
+  request.saveHar('api-traffic.har');
 };
 
 function requesting (path) {
-  var uri = 'http://localhost:1719' + path;
-  return request(uri).then(function (body) {
-    traffic.push({
-      request: {
-        uri: uri
-      },
-      response: {
-        statusCode: 200,
-        body: body
-      }
-    });
-    return JSON.parse(body);
+  var options = {
+    method: 'GET',
+    uri: 'http://localhost:1719' + path
+  };
+  return request(options).then(function (response) {
+    return JSON.parse(response.body);
   });
 }
 

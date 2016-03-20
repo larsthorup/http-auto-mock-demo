@@ -7,7 +7,8 @@ module.exports = function (config) {
     files: [
       'node_modules/chai/chai.js',
       'node_modules/sinon/pkg/sinon.js',
-      'api-traffic.json',
+      'node_modules/sinon-har-server/sinon-har-server.js',
+      { pattern: 'api-traffic.har', included: false },
       'test/mocha.main.js',
       'src/client/app.js',
       'src/client/api-faker.js',
